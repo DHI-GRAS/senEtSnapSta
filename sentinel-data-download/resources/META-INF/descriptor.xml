@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operator>
+  <name>org.esa.snap.core.gpf.operators.tooladapter.sentinel-data-download</name>
+  <operatorClass>org.esa.snap.core.gpf.operators.tooladapter.ToolAdapterOp</operatorClass>
+  <alias>sentinel-data-download</alias>
+  <label>Sentinel data download</label>
+  <version>0.1</version>
+  <authors>DHI GRAS A/S</authors>
+  <copyright>(C) 2019 DHI GRAS A/S</copyright>
+  <description>This operator searches for and downloads Sentinel-2 and Sentinel-3 images from Copernicus
+        Open Access Hub, given and area of interest (AOI) and a date range. The images will be 
+        downloaded to the folder containing the target product.</description>
+  <internal>false</internal>
+  <autoWriteSuppressed>false</autoWriteSuppressed>
+  <menuLocation>Menu/Optical/Thematic Land Processing/SEN-ET</menuLocation>
+  <preprocessTool>false</preprocessTool>
+  <writeForProcessing>false</writeForProcessing>
+  <mainToolFileLocation>$SENET_BIN_DIR/$SENET_SENTINEL_DATA_DOWNLOAD_EXEC</mainToolFileLocation>
+  <workingDir>$java.io.tmpdir</workingDir>
+  <templateType>VELOCITY</templateType>
+  <template type="file">
+    <file>sentinel-data-download-template.vm</file>
+  </template>
+  <progressPattern>.*</progressPattern>
+  <errorPattern>(ERROR:)(.+)</errorPattern>
+  <stepPattern>.*</stepPattern>
+  <variables>
+    <osvariable>
+      <key>SENET_BIN_DIR</key>
+      <value/>
+      <windows>$HOME/.snap/auxdata/sen-et-conda-Win64/sen-et-snap-scripts</windows>
+      <linux>$HOME/.snap/auxdata/sen-et-conda-Linux64/sen-et-snap-scripts</linux>
+      <macosx>$HOME/.snap/auxdata/sen-et-conda-Darwin64/sen-et-snap-scripts</macosx>
+      <isTransient>true</isTransient>
+      <isShared>false</isShared>
+    </osvariable>
+    <osvariable>
+      <key>SENET_SENTINEL_DATA_DOWNLOAD_EXEC</key>
+      <value/>
+      <windows>sentinel_data_download.bat</windows>
+      <linux>sentinel_data_download.sh</linux>
+      <macosx>sentinel_data_download.sh</macosx>
+      <isTransient>false</isTransient>
+      <isShared>false</isShared>
+    </osvariable>
+    <osvariable>
+      <key>USERPROFILE</key>
+      <value></value>
+      <isShared>false</isShared>
+      <windows></windows>
+      <linux>$HOME</linux>
+      <macosx>$HOME</macosx>
+      <isTransient>false</isTransient>
+    </osvariable>
+    <osvariable>
+      <key>HOME</key>
+      <value></value>
+      <isShared>false</isShared>
+      <windows>$USERPROFILE</windows>
+      <linux></linux>
+      <macosx></macosx>
+      <isTransient>false</isTransient>
+    </osvariable>
+    <osvariable>
+      <key>USER_HOME</key>
+      <value></value>
+      <isShared>false</isShared>
+      <windows>$USERPROFILE</windows>
+      <linux>$HOME</linux>
+      <macosx>$HOME</macosx>
+      <isTransient>false</isTransient>
+    </osvariable>
+    <variable>
+      <key>java.io.tmpdir</key>
+      <value></value>
+      <isShared>false</isShared>
+    </variable>
+  </variables>
+  <parameters>
+        <parameter>
+            <name>aoi_geojson_file</name>
+            <label>Geojson file with AOI</label>
+            <description>Geojson file with AOI</description>
+            <dataType>java.io.File</dataType>
+            <defaultValue></defaultValue>
+            <pattern>.*\.geojson$</pattern>
+        </parameter>
+        <parameter>
+            <name>start_date</name>
+            <label>Start date for image search (YYYYMMDD)</label>
+            <description>Start date for image search (YYYYMMDD)</description>
+            <dataType>java.lang.String</dataType>
+            <defaultValue>20190625</defaultValue>
+            <pattern>\d{8}</pattern>
+        </parameter>
+        <parameter>
+            <name>end_date</name>
+            <label>End date for image search (YYYYMMDD)</label>
+            <description>End date for image search (YYYYMMDD)</description>
+            <dataType>java.lang.String</dataType>
+            <defaultValue>20190627</defaultValue>
+            <pattern>\d{8}</pattern>
+        </parameter>
+        <parameter>
+            <name>platform</name>
+            <label>Satellite platform</label>
+            <description>Satellite platform</description>
+            <dataType>java.lang.String</dataType>
+            <defaultValue>Sentinel-2</defaultValue>
+            <valueSet>Sentinel-2,Sentinel-3</valueSet>
+        </parameter>
+        <parameter>
+            <name>download_path</name>
+            <label>Directory to which download products</label>
+            <description>Directory to which download products</description>
+            <dataType>java.io.File</dataType>
+            <defaultValue></defaultValue>
+        </parameter>
+        <parameter>
+            <name>username</name>
+            <label>Copernicus Open Access Hub username</label>
+            <description>Copernicus Open Access Hub username</description>
+            <dataType>java.lang.String</dataType>
+            <defaultValue></defaultValue>
+        </parameter>
+        <parameter>
+            <name>password</name>
+            <label>Copernicus Open Access Hub password</label>
+            <description>Copernicus Open Access Hub password</description>
+            <dataType>java.lang.String</dataType>
+            <defaultValue></defaultValue>
+        </parameter>
+        <parameter>
+            <name>download_images</name>
+            <label>Download images</label>
+            <description>Download images</description>
+            <dataType>boolean</dataType>
+            <defaultValue>True</defaultValue>
+        </parameter>
+        <parameter>
+            <name>cloud_cover_percentage</name>
+            <label>Maximum cloud cover percentage for S2 images</label>
+            <description>Maximum cloud cover percentage for Sentinel-2 images</description>
+            <dataType>int</dataType>
+            <defaultValue>70</defaultValue>
+            <interval>[0,99]</interval>
+        </parameter>
+  </parameters>
+  <sourceProductDescriptors/>
+  <targetPropertyDescriptors/>
+  <numSourceProducts>0</numSourceProducts>
+  <source>user</source>
+  <isSystem>false</isSystem>
+  <isHandlingOutputName>true</isHandlingOutputName>
+  <windowsBundle>
+    <bundleType>ZIP</bundleType>
+    <bundleLocation>REMOTE</bundleLocation>
+    <downloadURL>https://esa-sen4et.org/outputs/sen-et-1.0-conda-Win64.zip</downloadURL>
+    <templateparameter>
+      <template type="simple">
+        <contents></contents>
+      </template>
+    </templateparameter>
+    <targetLocation>$USERPROFILE/.snap/auxdata</targetLocation>
+    <entryPoint>sen-et-1.0-conda-Win64.zip</entryPoint>
+    <updateVariable>SENET_BIN_DIR</updateVariable>
+  </windowsBundle>
+  <linuxBundle>
+    <bundleType>ZIP</bundleType>
+    <bundleLocation>REMOTE</bundleLocation>
+    <downloadURL>https://esa-sen4et.org/outputs/sen-et-1.0-conda-Linux64.zip</downloadURL>
+    <templateparameter>
+      <template type="simple">
+        <contents></contents>
+      </template>
+    </templateparameter>
+    <targetLocation>$USERPROFILE/.snap/auxdata</targetLocation>
+    <entryPoint>sen-et-1.0-conda-Linux64.zip</entryPoint>
+    <updateVariable>SENET_BIN_DIR</updateVariable>
+  </linuxBundle>
+  <macosxBundle>
+    <bundleType>ZIP</bundleType>
+    <bundleLocation>REMOTE</bundleLocation>
+    <downloadURL>https://esa-sen4et.org/outputs/sen-et-1.0-conda-Darwin64.zip</downloadURL>
+    <templateparameter>
+      <template type="simple">
+        <contents></contents>
+      </template>
+    </templateparameter>
+    <targetLocation>$USER_HOME/.snap/auxdata</targetLocation>
+    <entryPoint>sen-et-1.0-conda-Darwin64.zip</entryPoint>
+    <updateVariable>SENET_BIN_DIR</updateVariable>
+  </macosxBundle>
+</operator>

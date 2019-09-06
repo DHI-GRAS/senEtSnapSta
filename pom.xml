@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <artifactId>sen-et-snap-sta</artifactId>
+    <groupId>org.esa.s2tbx.s2tbx-sta-adapters</groupId>
+    <version>0.1</version>
+
+    <packaging>pom</packaging>
+
+    <name>SEN-ET Tool Adapters for SNAP</name>
+    <description>Adapters for the Standalone Tools of the SEN-ET Toolbox</description>
+
+    <modules>
+        <module>sentinel-data-download</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <snap.version>7.0.0</snap.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.esa.snap</groupId>
+            <artifactId>snap-sta</artifactId>
+            <version>${snap.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.esa.snap</groupId>
+            <artifactId>snap-sta-ui</artifactId>
+            <version>${snap.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.esa.snap</groupId>
+            <artifactId>snap-rcp</artifactId>
+            <version>${snap.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>nbm-maven-plugin</artifactId>
+                <version>4.1</version>
+                <extensions>true</extensions>
+                <configuration combine.self="override">
+                    <moduleType>normal</moduleType>
+                    <licenseName>GPL 3</licenseName>
+                    <licenseFile>${project.basedir}/../../../LICENSE.html</licenseFile>
+                    <useOSGiDependencies>false</useOSGiDependencies>
+                    <requiresRestart>false</requiresRestart>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
