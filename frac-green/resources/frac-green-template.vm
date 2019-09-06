@@ -1,0 +1,8 @@
+--l2a_file
+$sourceProductFile[0]
+--biophysical_file
+$sourceProductFile[1]
+--min_frac_green
+$minimum_frac_green
+--output_file
+$output

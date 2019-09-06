@@ -15,6 +15,7 @@
 
     <modules>
         <module>sentinel-data-download</module>
+        <module>frac-green</module>
     </modules>
 
     <properties>
