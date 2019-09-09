@@ -95,7 +95,7 @@
   </parameters>
   <sourceProductDescriptors>
         <org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
-            <name>Sentinel-2 L2A image</name>
+            <name>Sentinel-2 sun zenith angle image</name>
         </org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
         <org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
             <name>Plant biophysical properties image</name>
