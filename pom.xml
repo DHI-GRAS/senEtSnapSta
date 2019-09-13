@@ -15,7 +15,16 @@
 
     <modules>
         <module>sentinel-data-download</module>
-        <module>frac-green</module>
+	<module>frac-green</module>
+	<module>leaf-spectra</module>
+	<module>daily-evapotranspiration</module>
+	<module>ecmwf-data-download</module>
+	<module>ecmwf-data-preparation</module>
+	<module>energy-fluxes</module>
+	<module>structural-params</module>
+	<module>aerodynamic-roughness</module>
+	<module>longwave-irradiance</module>
+	<module>net-shortwave-radiation</module>
     </modules>
 
     <properties>

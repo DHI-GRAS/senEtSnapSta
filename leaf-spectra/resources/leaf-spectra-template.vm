@@ -1,0 +1,4 @@
+--biophysical_file
+$sourceProductFile
+--output_file
+$output_file

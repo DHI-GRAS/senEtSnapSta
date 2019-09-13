@@ -1,0 +1,12 @@
+--meteo_product
+$sourceProductFile
+--at_band
+$air_temperature_band
+--vp_band
+$vapour_pressure_band
+--ap_band
+$air_pressure_band
+--at_height
+$air_temperature_height
+--output_file
+$output_file

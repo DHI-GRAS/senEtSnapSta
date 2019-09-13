@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operator>
+	<name>org.esa.snap.core.gpf.operators.tooladapter.net-shortwave-radiation</name>
+  <operatorClass>org.esa.snap.core.gpf.operators.tooladapter.ToolAdapterOp</operatorClass>
+  <alias>net-shortwave-radiation</alias>
+  <label>Estimate net shortwave radiation</label>
+  <version>0.1</version>
+  <authors>DHI GRAS A/S</authors>
+  <copyright>(C) 2019 DHI GRAS A/S</copyright>
+  <description>This operator estimates net shortwave radiation based on meteorological and biophysical inputs.</description>
+  <internal>false</internal>
+  <autoWriteSuppressed>false</autoWriteSuppressed>
+  <menuLocation>Menu/Optical/Thematic Land Processing/SEN-ET</menuLocation>
+  <preprocessTool>false</preprocessTool>
+  <writeForProcessing>false</writeForProcessing>
+  <mainToolFileLocation>$SENET_BIN_DIR/$SENET_EXEC</mainToolFileLocation>
+  <workingDir>$java.io.tmpdir</workingDir>
+  <templateType>VELOCITY</templateType>
+  <template type="file">
+    <file>net-shortwave-radiation.vm</file>
+  </template>
+  <progressPattern>.*</progressPattern>
+  <errorPattern>(ERROR:)(.+)</errorPattern>
+  <stepPattern>.*</stepPattern>
+  <variables>
+    <osvariable>
+      <key>SENET_BIN_DIR</key>
+      <value/>
+      <windows>$HOME/.snap/auxdata/sen-et-conda-Win64/sen-et-snap-scripts</windows>
+      <linux>$HOME/.snap/auxdata/sen-et-conda-Linux64/sen-et-snap-scripts</linux>
+      <macosx>$HOME/.snap/auxdata/sen-et-conda-Darwin64/sen-et-snap-scripts</macosx>
+      <isTransient>true</isTransient>
+      <isShared>false</isShared>
+    </osvariable>
+    <osvariable>
+      <key>SENET_EXEC</key>
+      <value/>
+      <windows>net_shortwave_radiation.bat</windows>
+      <linux>net_shortwave_radiation.sh</linux>
+      <macosx>net_shortwave_radiation.sh</macosx>
+      <isTransient>false</isTransient>
+      <isShared>false</isShared>
+    </osvariable>
+    <osvariable>
+      <key>USERPROFILE</key>
+      <value></value>
+      <isShared>false</isShared>
+      <windows></windows>
+      <linux>$HOME</linux>
+      <macosx>$HOME</macosx>
+      <isTransient>false</isTransient>
+    </osvariable>
+    <osvariable>
+      <key>HOME</key>
+      <value></value>
+      <isShared>false</isShared>
+      <windows>$USERPROFILE</windows>
+      <linux></linux>
+      <macosx></macosx>
+      <isTransient>false</isTransient>
+    </osvariable>
+    <osvariable>
+      <key>USER_HOME</key>
+      <value></value>
+      <isShared>false</isShared>
+      <windows>$USERPROFILE</windows>
+      <linux>$HOME</linux>
+      <macosx>$HOME</macosx>
+      <isTransient>false</isTransient>
+    </osvariable>
+    <variable>
+      <key>java.io.tmpdir</key>
+      <value></value>
+      <isShared>false</isShared>
+    </variable>
+  </variables>
+  <parameters>
+	<parameter>
+            <name>soil_reflectance_vis</name>
+            <label>Visible soil reflectance</label>
+            <description>Reflectance of the soil in visible spectrum</description>
+            <dataType>float</dataType>
+            <defaultValue>0.15</defaultValue>
+            <interval>[0,1]</interval>
+            <notEmpty>true</notEmpty>
+        </parameter>
+        <parameter>
+            <name>soil_reflectance_nir</name>
+            <label>Near-infrared soil reflectance</label>
+            <description>Reflectance of the soil in near-infrared spectrum</description>
+            <dataType>float</dataType>
+            <defaultValue>0.25</defaultValue>
+            <interval>[0,1]</interval>
+            <notEmpty>true</notEmpty>
+        </parameter>  
+	<parameter>
+            <name>output_file</name>
+            <label>Output image</label>
+            <description>Output image</description>
+            <dataType>java.io.File</dataType>
+            <defaultValue></defaultValue>
+        </parameter>
+  </parameters>
+  <sourceProductDescriptors>
+        <org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
+            <name>Leaf spectral properties product</name>
+    	</org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
+	<org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
+            <name>Leaf area index product</name>
+    	</org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
+	<org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
+            <name>Canopy structural properties product</name>
+    	</org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
+	<org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
+            <name>Meteorological inputs product</name>
+    	</org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
+	<org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
+            <name>Solar zenith angle product</name>
+    	</org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
+  </sourceProductDescriptors>
+  <targetPropertyDescriptors/>
+  <numSourceProducts>5</numSourceProducts>
+  <source>user</source>
+  <isSystem>false</isSystem>
+  <isHandlingOutputName>true</isHandlingOutputName>
+  <windowsBundle>
+    <bundleType>ZIP</bundleType>
+    <bundleLocation>REMOTE</bundleLocation>
+    <downloadURL>https://esa-sen4et.org/outputs/sen-et-1.0-conda-Win64.zip</downloadURL>
+    <templateparameter>
+      <template type="simple">
+        <contents></contents>
+      </template>
+    </templateparameter>
+    <targetLocation>$USERPROFILE/.snap/auxdata</targetLocation>
+    <entryPoint>sen-et-1.0-conda-Win64.zip</entryPoint>
+    <updateVariable>SENET_BIN_DIR</updateVariable>
+  </windowsBundle>
+  <linuxBundle>
+    <bundleType>ZIP</bundleType>
+    <bundleLocation>REMOTE</bundleLocation>
+    <downloadURL>https://esa-sen4et.org/outputs/sen-et-1.0-conda-Linux64.zip</downloadURL>
+    <templateparameter>
+      <template type="simple">
+        <contents></contents>
+      </template>
+    </templateparameter>
+    <targetLocation>$USERPROFILE/.snap/auxdata</targetLocation>
+    <entryPoint>sen-et-1.0-conda-Linux64.zip</entryPoint>
+    <updateVariable>SENET_BIN_DIR</updateVariable>
+  </linuxBundle>
+  <macosxBundle>
+    <bundleType>ZIP</bundleType>
+    <bundleLocation>REMOTE</bundleLocation>
+    <downloadURL>https://esa-sen4et.org/outputs/sen-et-1.0-conda-Darwin64.zip</downloadURL>
+    <templateparameter>
+      <template type="simple">
+        <contents></contents>
+      </template>
+    </templateparameter>
+    <targetLocation>$USER_HOME/.snap/auxdata</targetLocation>
+    <entryPoint>sen-et-1.0-conda-Darwin64.zip</entryPoint>
+    <updateVariable>SENET_BIN_DIR</updateVariable>
+  </macosxBundle>
+</operator>
