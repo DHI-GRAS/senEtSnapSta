@@ -79,8 +79,8 @@
             <name>elevation_band</name>
             <label>Elevation band</label>
             <description>Elevation band - the meteorological data will be resmapled to the same spatial resolution</description>
-	    <dataType>java.lang.String</dataType>
-            <defaultValue></defaultValue>
+	         <dataType>java.lang.String</dataType>
+            <defaultValue>elevation</defaultValue>
         </parameter>
         <parameter>
             <name>ecmwf_data_file</name>
@@ -92,12 +92,20 @@
         </parameter>
         <parameter>
             <name>date_time_UTC</name>
-            <label>Date and time (UTC) for which to prepare meteorological data (YYYY-MM-DD HH:MM:SS.S)</label>
+            <label>Date and time (UTC) for which to prepare meteorological data</label>
             <description>Date and time (UTC) for which to prepare meteorological data (YYYY-MM-DD HH:MM)</description>
             <dataType>java.lang.String</dataType>
-            <defaultValue>2017-01-12 10:30</defaultValue>
+            <defaultValue>2019-04-26 10:30</defaultValue>
             <pattern>\d{4}-\d{2}-\d{2} \d{2}:\d{2}</pattern>
         </parameter>
+        <parameter>
+            <name>time_zone</name>
+            <label>Time zone of the center of area of interest</label>
+            <description>Time zone of the center of area of interest. It is used when calculating average daily solar irradiation.</description>
+            <dataType>java.lang.Integer</dataType>
+            <defaultValue>0</defaultValue>
+            <interval>[-12,12]</interval>
+        </parameter>        
         <parameter>
             <name>prepare_temperature</name>
             <label>Prepare air temperature data</label>

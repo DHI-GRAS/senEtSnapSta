@@ -4,8 +4,10 @@ $sourceProductFile
 $elevation_band
 --ecmwf_data_file
 $ecmwf_data_file
---date_time_UTC
+--date_time_utc
 $date_time_UTC
+--time_zone
+$time_zone
 --prepare_temperature
 $prepare_temperature
 --prepare_vapour_pressure
