@@ -14,8 +14,8 @@
     <description>Adapters for the Standalone Tools of the SEN-ET Toolbox</description>
 
     <modules>
-        <module>sentinel-data-download</module>
-	<module>frac-green</module>
+    <module>sentinel-data-download</module>
+    <module>frac-green</module>
 	<module>leaf-spectra</module>
 	<module>daily-evapotranspiration</module>
 	<module>ecmwf-data-download</module>
@@ -25,6 +25,7 @@
 	<module>aerodynamic-roughness</module>
 	<module>longwave-irradiance</module>
 	<module>net-shortwave-radiation</module>
+    <module>warp-to-template</module>
     </modules>
 
     <properties>
