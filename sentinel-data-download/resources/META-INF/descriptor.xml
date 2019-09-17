@@ -107,7 +107,10 @@
             <description>Satellite platform</description>
             <dataType>java.lang.String</dataType>
             <defaultValue>Sentinel-2</defaultValue>
-            <valueSet>Sentinel-2,Sentinel-3</valueSet>
+            <valueSet>
+                <string>Sentinel-2</string>
+                <string>Sentinel-3</string>
+            </valueSet>
         </parameter>
         <parameter>
             <name>download_path</name>
