@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+OpenIDE-Module-Display-Category: SNAP
+OpenIDE-Module-Implementation-Version: 7.0.0
+OpenIDE-Module-Java-Dependencies: Java > 1.8
+OpenIDE-Module-Type: STA
+OpenIDE-Module-Short-Description: Prepare ERA5 reanalysis surface meteorogical data 
+OpenIDE-Module: org.esa.snap.core.gpf.operators.tooladapter.data-mining-sharpener
+OpenIDE-Module-Module-Dependencies: org.esa.snap.snap.sta, org.esa.snap.snap.sta.ui
+OpenIDE-Module-Alias: data-mining-sharpener
+OpenIDE-Module-Specification-Version: 7.0.0
+
