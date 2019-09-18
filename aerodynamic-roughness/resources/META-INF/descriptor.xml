@@ -85,12 +85,12 @@
             <defaultValue>0.01</defaultValue>
         </parameter>
         <parameter>
-            <name>output_file</name>
+            <name>targetProductFile</name>
             <label>Output image</label>
             <description>Output image</description>
             <dataType>java.io.File</dataType>
-            <defaultValue></defaultValue>
-        </parameter>
+            <pattern>.*\.dim$</pattern>
+   	    </parameter>
   </parameters>
   <sourceProductDescriptors>
         <org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
@@ -104,7 +104,7 @@
   <numSourceProducts>2</numSourceProducts>
   <source>user</source>
   <isSystem>false</isSystem>
-  <isHandlingOutputName>true</isHandlingOutputName>
+  <isHandlingOutputName>false</isHandlingOutputName>
   <windowsBundle>
     <bundleType>ZIP</bundleType>
     <bundleLocation>REMOTE</bundleLocation>

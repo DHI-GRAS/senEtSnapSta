@@ -35,4 +35,4 @@ $save_component_temperature
 --save_aerodynamic_parameters
 $save_aerodynamic_parameters
 --output_file
-$output_file
+$targetProductFile

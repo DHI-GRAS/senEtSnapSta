@@ -120,7 +120,7 @@
             <defaultValue>True</defaultValue>
             <notEmpty>true</notEmpty>
     	</parameter>
-	<parameter>
+	    <parameter>
             <name>produce_leaf_width</name>
             <label>Produce leaf width maps</label>
             <description>Produce leaf width maps based on land-cover map and look-up table.
@@ -149,12 +149,12 @@
             <notEmpty>true</notEmpty>
         </parameter>
         <parameter>
-            <name>output_file</name>
+            <name>targetProductFile</name>
             <label>Output image</label>
             <description>Output image</description>
             <dataType>java.io.File</dataType>
-            <defaultValue></defaultValue>
-        </parameter>
+            <pattern>.*\.dim$</pattern>
+   	    </parameter>
   </parameters>
   <sourceProductDescriptors>
         <org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>

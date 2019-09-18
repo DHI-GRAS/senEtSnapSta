@@ -100,7 +100,7 @@
             <pattern>\d{4}-\d{2}-\d{2}</pattern>
         </parameter>
         <parameter>
-            <name>download_path</name>
+            <name>targetProductFile</name>
             <label>File to which download data (must be NetCDF)</label>
             <description>File to which download data (must be NetCDF)</description>
             <dataType>java.io.File</dataType>
@@ -135,7 +135,7 @@
             <dataType>boolean</dataType>
             <defaultValue>True</defaultValue>
         </parameter>
-	<parameter>
+	    <parameter>
             <name>download_clear_sky_solar_radiation</name>
             <label>Download clear-sky incoming solar radiation data</label>
             <description>Download clear-sky downward solar radiation data</description>

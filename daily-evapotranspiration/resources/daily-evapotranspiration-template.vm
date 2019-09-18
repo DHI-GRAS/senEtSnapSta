@@ -3,4 +3,4 @@ $sourceProductFile[0]
 --mi_file
 $sourceProductFile[1]
 --output_file
-$output_file
+$targetProductFile

@@ -5,4 +5,4 @@ $sourceProductFile[1]
 --soil_roughness
 $soil_roughness
 --output_file
-$output_file
+$targetProductFile

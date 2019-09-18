@@ -76,12 +76,12 @@
   </variables>
   <parameters>
 	  <parameter>
-            <name>output_file</name>
+            <name>targetProductFile</name>
             <label>Output image</label>
             <description>Output image</description>
             <dataType>java.io.File</dataType>
-            <defaultValue></defaultValue>
-       	</parameter>
+            <pattern>.*\.dim$</pattern>
+   	    </parameter>
   </parameters>
   <sourceProductDescriptors>
         <org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>

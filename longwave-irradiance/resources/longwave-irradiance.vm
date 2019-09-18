@@ -9,4 +9,4 @@ $air_pressure_band
 --at_height
 $air_temperature_height
 --output_file
-$output_file
+$targetProductFile

@@ -118,7 +118,7 @@
             <defaultValue>0.97</defaultValue>
             <notEmpty>true</notEmpty>
         </parameter>
-	<parameter>
+	    <parameter>
             <name>save_component_fluxes</name>
             <description>Save soil and canopy fluxes</description>
             <dataType>boolean</dataType>
@@ -139,13 +139,13 @@
             <defaultValue>False</defaultValue>
             <notEmpty>true</notEmpty>
         </parameter>
-	<parameter>
-            <name>output_file</name>
+	    <parameter>
+            <name>targetProductFile</name>
             <label>Output image</label>
             <description>Output image</description>
             <dataType>java.io.File</dataType>
-            <defaultValue></defaultValue>
-       	</parameter>
+            <pattern>.*\.dim$</pattern>
+   	    </parameter>
   </parameters>
   <sourceProductDescriptors>
         <org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>

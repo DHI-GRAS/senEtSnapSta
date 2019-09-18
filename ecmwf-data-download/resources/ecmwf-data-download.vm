@@ -5,7 +5,7 @@ $start_date
 --end_date
 $end_date
 --download_path
-$download_path
+$targetProductFile
 --download_temperature
 $download_temperature
 --download_dewpoint

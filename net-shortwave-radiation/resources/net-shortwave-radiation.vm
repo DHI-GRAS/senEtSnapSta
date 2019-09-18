@@ -13,4 +13,4 @@ $soil_reflectance_vis
 --soil_ref_nir
 $soil_reflectance_nir
 --output_file
-$output_file
+$targetProductFile

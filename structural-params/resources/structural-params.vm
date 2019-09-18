@@ -21,4 +21,4 @@ $produce_leaf_inclination_distribution
 --produce_igbp
 $produce_IGBP_classification
 --output_file
-$output_file
+$targetProductFile

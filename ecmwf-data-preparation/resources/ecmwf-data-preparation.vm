@@ -21,4 +21,4 @@ $prepare_clear_sky_solar_radiation
 --prepare_daily_solar_irradiance
 $prepare_daily_solar_irradiance
 --output_file
-$output_file
+$targetProductFile
