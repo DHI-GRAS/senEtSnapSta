@@ -122,7 +122,7 @@
   <numSourceProducts>5</numSourceProducts>
   <source>user</source>
   <isSystem>false</isSystem>
-  <isHandlingOutputName>true</isHandlingOutputName>
+  <isHandlingOutputName>false</isHandlingOutputName>
   <windowsBundle>
     <bundleType>ZIP</bundleType>
     <bundleLocation>REMOTE</bundleLocation>

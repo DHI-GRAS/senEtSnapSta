@@ -171,7 +171,7 @@
   <numSourceProducts>3</numSourceProducts>
   <source>user</source>
   <isSystem>false</isSystem>
-  <isHandlingOutputName>true</isHandlingOutputName>
+  <isHandlingOutputName>false</isHandlingOutputName>
   <windowsBundle>
     <bundleType>ZIP</bundleType>
     <bundleLocation>REMOTE</bundleLocation>
@@ -188,7 +188,7 @@
   <linuxBundle>
     <bundleType>ZIP</bundleType>
     <bundleLocation>REMOTE</bundleLocation>
-    <downloadURL>https://esa-sen4et.org/outputs/sen-et-1.0-conda-Linux64.zip</downloadURL>
+    <downloadURL>http://grasdemo.dhigroup.com/download/sen-et-1.0-conda-Linux64.zip</downloadURL>
     <templateparameter>
       <template type="simple">
         <contents></contents>

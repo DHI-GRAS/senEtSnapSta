@@ -88,15 +88,11 @@
             <name>Plant biophysical properties</name>
         </org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
   </sourceProductDescriptors>
-  <targetPropertyDescriptors>
-        <org.esa.snap.core.gpf.descriptor.DefaultTargetPropertyDescriptor>
-            <name>Output</name>
-        </org.esa.snap.core.gpf.descriptor.DefaultTargetPropertyDescriptor>
-  </targetPropertyDescriptors>
+  <targetPropertyDescriptors/>
   <numSourceProducts>1</numSourceProducts>
   <source>user</source>
   <isSystem>false</isSystem>
-  <isHandlingOutputName>true</isHandlingOutputName>
+  <isHandlingOutputName>false</isHandlingOutputName>
   <windowsBundle>
     <bundleType>ZIP</bundleType>
     <bundleLocation>REMOTE</bundleLocation>
