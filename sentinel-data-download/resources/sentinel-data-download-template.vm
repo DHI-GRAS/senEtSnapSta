@@ -16,3 +16,5 @@ $password
 $download_images
 --cloud_cover_percentage
 $cloud_cover_percentage
+--limit_tiles
+$limit_tiles
