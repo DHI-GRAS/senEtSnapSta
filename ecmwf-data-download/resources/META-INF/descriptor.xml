@@ -2,7 +2,7 @@
 <operator>
   <name>org.esa.snap.core.gpf.operators.tooladapter.ecmwf-data-download</name>
   <operatorClass>org.esa.snap.core.gpf.operators.tooladapter.ToolAdapterOp</operatorClass>
-  <alias>ecmwf-data-download</alias>
+  <alias>Download ECMWF ERA5 reanalysis data</alias>
   <label>Download ECMWF ERA5 reanalysis data</label>
   <version>0.1</version>
   <authors>DHI GRAS A/S</authors>
@@ -100,14 +100,6 @@
             <pattern>\d{4}-\d{2}-\d{2}</pattern>
         </parameter>
         <parameter>
-            <name>targetProductFile</name>
-            <label>File to which download data (must be NetCDF)</label>
-            <description>File to which download data (must be NetCDF)</description>
-            <dataType>java.io.File</dataType>
-            <defaultValue></defaultValue>
-            <pattern>.*\.nc$</pattern>
-        </parameter>
-        <parameter>
             <name>download_temperature</name>
             <label>Download air temperature data</label>
             <description>Download air temperature data</description>
@@ -155,6 +147,14 @@
             <description>Overwrite file if it exists</description>
             <dataType>boolean</dataType>
             <defaultValue>True</defaultValue>
+    	</parameter>
+	<parameter>
+            <name>targetProductFile</name>
+            <label>File to which download data (must be NetCDF)</label>
+            <description>File to which download data (must be NetCDF)</description>
+            <dataType>java.io.File</dataType>
+            <defaultValue></defaultValue>
+            <pattern>.*\.nc$</pattern>
         </parameter>
   </parameters>
   <sourceProductDescriptors/>
@@ -162,7 +162,7 @@
   <numSourceProducts>0</numSourceProducts>
   <source>user</source>
   <isSystem>false</isSystem>
-  <isHandlingOutputName>true</isHandlingOutputName>
+  <isHandlingOutputName>false</isHandlingOutputName>
   <windowsBundle>
     <bundleType>ZIP</bundleType>
     <bundleLocation>REMOTE</bundleLocation>
@@ -177,12 +177,12 @@
     <updateVariable>SENET_BIN_DIR</updateVariable>
   </windowsBundle>
   <linuxBundle>
-    <bundleType>ZIP</bundleType>
+    <bundleType>INSTALLER</bundleType>
     <bundleLocation>REMOTE</bundleLocation>
-    <downloadURL>https://esa-sen4et.org/outputs/sen-et-1.0-conda-Linux64.zip</downloadURL>
+    <downloadURL>https://senetfiles.blob.core.windows.net/files/sen-et-conda-Linux64.run</downloadURL>
     <templateparameter>
       <template type="simple">
-        <contents></contents>
+              <contents>--nox11 --target $targetLocation/sen-et-conda-Linux64.run</contents>  
       </template>
     </templateparameter>
     <targetLocation>$USERPROFILE/.snap/auxdata</targetLocation>

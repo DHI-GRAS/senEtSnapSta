@@ -6,6 +6,6 @@ OpenIDE-Module-Type: STA
 OpenIDE-Module-Short-Description: Produce maps of vegetation structural parameters 
 OpenIDE-Module: org.esa.snap.core.gpf.operators.tooladapter.structural-params
 OpenIDE-Module-Module-Dependencies: org.esa.snap.snap.sta, org.esa.snap.snap.sta.ui
-OpenIDE-Module-Alias: structural-params
+OpenIDE-Module-Alias: Produce maps of vegetation structural parameters
 OpenIDE-Module-Specification-Version: 7.0.0
 

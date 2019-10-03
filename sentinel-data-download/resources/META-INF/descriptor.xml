@@ -181,7 +181,7 @@
     <downloadURL>https://senetfiles.blob.core.windows.net/files/sen-et-conda-Linux64.run</downloadURL>
     <templateparameter>
       <template type="simple">
-	      <contents>--nox11 --target $targetLocation/sen-et-conda-Linux64.run</contents>
+	      <contents>--nox11 --target $targetLocation/sen-et-conda-Linux64</contents>
       </template>
     </templateparameter>
     <targetLocation>$USERPROFILE/.snap/auxdata</targetLocation>

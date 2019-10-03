@@ -2,7 +2,7 @@
 <operator>
 	<name>org.esa.snap.core.gpf.operators.tooladapter.longwave-irradiance</name>
   <operatorClass>org.esa.snap.core.gpf.operators.tooladapter.ToolAdapterOp</operatorClass>
-  <alias>longwave-irradiance</alias>
+  <alias>Estimate atmosphere longwave irradiance</alias>
   <label>Estimate atmosphere longwave irradiance</label>
   <version>0.1</version>
   <authors>DHI GRAS A/S</authors>
@@ -140,12 +140,12 @@
     <updateVariable>SENET_BIN_DIR</updateVariable>
   </windowsBundle>
   <linuxBundle>
-    <bundleType>ZIP</bundleType>
+    <bundleType>INSTALLER</bundleType>
     <bundleLocation>REMOTE</bundleLocation>
-    <downloadURL>https://esa-sen4et.org/outputs/sen-et-1.0-conda-Linux64.zip</downloadURL>
+    <downloadURL>https://senetfiles.blob.core.windows.net/files/sen-et-conda-Linux64.run</downloadURL>
     <templateparameter>
       <template type="simple">
-        <contents></contents>
+              <contents>--nox11 --target $targetLocation/sen-et-conda-Linux64</contents>      
       </template>
     </templateparameter>
     <targetLocation>$USERPROFILE/.snap/auxdata</targetLocation>
