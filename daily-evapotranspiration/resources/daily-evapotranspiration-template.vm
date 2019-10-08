@@ -1,6 +1,0 @@
---ief_file
-$sourceProductFile[0]
---mi_file
-$sourceProductFile[1]
---output_file
-$targetProductFile

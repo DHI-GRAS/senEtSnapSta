@@ -1,9 +1,0 @@
---resample_algorithm
-$resample_algorithm
---output
-$targetProductFile
---source
-$sourceProductFile[0]
---template
-$sourceProductFile[1]
-

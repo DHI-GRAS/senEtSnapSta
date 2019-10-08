@@ -1,8 +1,0 @@
---lai_map
-$sourceProductFile[0]
---landcover_params_map
-$sourceProductFile[1]
---soil_roughness
-$soil_roughness
---output_file
-$targetProductFile
