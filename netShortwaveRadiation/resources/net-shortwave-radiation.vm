@@ -1,0 +1,16 @@
+--lsp_product
+$sourceProductFile[0]
+--lai_product
+$sourceProductFile[1]
+--csp_product
+$sourceProductFile[2]
+--mi_product
+$sourceProductFile[3]
+--sza_product
+$sourceProductFile[4]
+--soil_ref_vis
+$soil_reflectance_vis
+--soil_ref_nir
+$soil_reflectance_nir
+--output_file
+$targetProductFile

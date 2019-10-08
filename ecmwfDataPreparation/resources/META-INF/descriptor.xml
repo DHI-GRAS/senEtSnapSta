@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operator>
+  <name>org.esa.snap.core.gpf.operators.tooladapter.ecmwfDataPreparation</name>
+  <operatorClass>org.esa.snap.core.gpf.operators.tooladapter.ToolAdapterOp</operatorClass>
+  <alias>Prepare ERA5 reanalysis data</alias>
+  <label>Prepare ERA5 reanalysis surface meteorological data</label>
+  <version>0.1</version>
+  <authors>DHI GRAS A/S</authors>
+  <copyright>(C) 2019 DHI GRAS A/S</copyright>
+  <description>This operator prepares ERA5 reanalysis surface meteorological data</description>
+  <internal>false</internal>
+  <autoWriteSuppressed>false</autoWriteSuppressed>
+  <menuLocation>Menu/Optical/Thematic Land Processing/SEN-ET</menuLocation>
+  <preprocessTool>false</preprocessTool>
+  <writeForProcessing>false</writeForProcessing>
+  <mainToolFileLocation>$SENET_BIN_DIR/$SENET_EXEC</mainToolFileLocation>
+  <workingDir>$java.io.tmpdir</workingDir>
+  <templateType>VELOCITY</templateType>
+  <template type="file">
+    <file>ecmwf-data-preparation.vm</file>
+  </template>
+  <progressPattern>.*</progressPattern>
+  <errorPattern>(ERROR:)(.+)</errorPattern>
+  <stepPattern>.*</stepPattern>
+  <variables>
+    <osvariable>
+      <key>SENET_BIN_DIR</key>
+      <value/>
+      <windows>$HOME/.snap/auxdata/sen-et-conda-Win64/sen-et-snap-scripts</windows>
+      <linux>$HOME/.snap/auxdata/sen-et-conda-Linux64/sen-et-snap-scripts</linux>
+      <macosx>$HOME/.snap/auxdata/sen-et-conda-Darwin64/sen-et-snap-scripts</macosx>
+      <isTransient>true</isTransient>
+      <isShared>false</isShared>
+    </osvariable>
+    <osvariable>
+      <key>SENET_EXEC</key>
+      <value/>
+      <windows>ecmwf_data_preparation.bat</windows>
+      <linux>ecmwf_data_preparation.sh</linux>
+      <macosx>ecmwf_data_preparation.sh</macosx>
+      <isTransient>false</isTransient>
+      <isShared>false</isShared>
+    </osvariable>
+    <osvariable>
+      <key>USERPROFILE</key>
+      <value></value>
+      <isShared>false</isShared>
+      <windows></windows>
+      <linux>$HOME</linux>
+      <macosx>$HOME</macosx>
+      <isTransient>false</isTransient>
+    </osvariable>
+    <osvariable>
+      <key>HOME</key>
+      <value></value>
+      <isShared>false</isShared>
+      <windows>$USERPROFILE</windows>
+      <linux></linux>
+      <macosx></macosx>
+      <isTransient>false</isTransient>
+    </osvariable>
+    <osvariable>
+      <key>USER_HOME</key>
+      <value></value>
+      <isShared>false</isShared>
+      <windows>$USERPROFILE</windows>
+      <linux>$HOME</linux>
+      <macosx>$HOME</macosx>
+      <isTransient>false</isTransient>
+    </osvariable>
+    <variable>
+      <key>java.io.tmpdir</key>
+      <value></value>
+      <isShared>false</isShared>
+    </variable>
+  </variables>
+  <parameters>
+	<parameter>
+            <name>elevation_band</name>
+            <label>Elevation band</label>
+            <description>Elevation band - the meteorological data will be resmapled to the same spatial resolution</description>
+	         <dataType>java.lang.String</dataType>
+            <defaultValue>elevation</defaultValue>
+        </parameter>
+        <parameter>
+            <name>ecmwf_data_file</name>
+            <label>File to which ECMWF data was downloaded (must be NetCDF)</label>
+            <description>File to which ECMWF data was downloaded (must be NetCDF)</description>
+            <dataType>java.io.File</dataType>
+            <defaultValue></defaultValue>
+            <pattern>.*\.nc$</pattern>
+        </parameter>
+        <parameter>
+            <name>date_time_UTC</name>
+            <label>Date and time (UTC) for which to prepare meteorological data</label>
+            <description>Date and time (UTC) for which to prepare meteorological data (YYYY-MM-DD HH:MM)</description>
+            <dataType>java.lang.String</dataType>
+            <defaultValue>2019-04-26 10:30</defaultValue>
+            <pattern>\d{4}-\d{2}-\d{2} \d{2}:\d{2}</pattern>
+        </parameter>
+        <parameter>
+            <name>time_zone</name>
+            <label>Time zone of the center of area of interest</label>
+            <description>Time zone of the center of area of interest. It is used when calculating average daily solar irradiation.</description>
+            <dataType>java.lang.Integer</dataType>
+            <defaultValue>0</defaultValue>
+            <interval>[-12,12]</interval>
+        </parameter>        
+        <parameter>
+            <name>prepare_temperature</name>
+            <label>Prepare air temperature data</label>
+            <description>Prepare air temperature data</description>
+            <dataType>boolean</dataType>
+            <defaultValue>True</defaultValue>
+        </parameter>
+        <parameter>
+            <name>prepare_vapour_pressure</name>
+            <label>Prepare vapour pressure data</label>
+            <description>Prepare vapour pressure data</description>
+            <dataType>boolean</dataType>
+            <defaultValue>True</defaultValue>
+        </parameter>
+        <parameter>
+            <name>prepare_air_pressure</name>
+            <label>Prepare air pressure data</label>
+            <description>Prepare air pressure data</description>
+            <dataType>boolean</dataType>
+            <defaultValue>True</defaultValue>
+        </parameter>
+        <parameter>
+            <name>prepare_wind_speed</name>
+            <label>Prepare wind speed data</label>
+            <description>Prepare wind speed data</description>
+            <dataType>boolean</dataType>
+            <defaultValue>True</defaultValue>
+        </parameter>
+        <parameter>
+            <name>prepare_clear_sky_solar_radiation</name>
+            <label>Prepare clear-sky incoming solar radiation data</label>
+            <description>Prepare clear-sky downward solar radiation data</description>
+            <dataType>boolean</dataType>
+            <defaultValue>True</defaultValue>
+        </parameter>
+        <parameter>
+            <name>prepare_daily_solar_irradiance</name>
+            <label>Prepare average daily solar irradiance data</label>
+            <description>Prepare average daily solar irradiance data</description>
+            <dataType>boolean</dataType>
+            <defaultValue>True</defaultValue>
+        </parameter>
+	    <parameter>
+            <name>targetProductFile</name>
+            <label>Output image</label>
+            <description>Output image</description>
+            <dataType>java.io.File</dataType>
+            <pattern>.*\.dim$</pattern>
+   	    </parameter>
+  </parameters>
+  <sourceProductDescriptors>
+        <org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
+            <name>Elevation map</name>
+        </org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
+  </sourceProductDescriptors>
+  <targetPropertyDescriptors/>
+  <numSourceProducts>1</numSourceProducts>
+  <source>user</source>
+  <isSystem>false</isSystem>
+  <isHandlingOutputName>false</isHandlingOutputName>
+  <windowsBundle>
+    <bundleType>INSTALLER</bundleType>
+    <bundleLocation>REMOTE</bundleLocation>
+    <downloadURL>https://senetfiles.blob.core.windows.net/files/sen-et-conda-Win64.exe</downloadURL>
+    <templateparameter>
+      <template type="simple">
+        <contents></contents>
+      </template>
+    </templateparameter>
+    <targetLocation>$USERPROFILE/.snap/auxdata</targetLocation>
+    <entryPoint>sen-et-conda-Win64.exe</entryPoint>
+    <updateVariable>SENET_BIN_DIR</updateVariable>
+  </windowsBundle>
+  <linuxBundle>
+    <bundleType>INSTALLER</bundleType>
+    <bundleLocation>REMOTE</bundleLocation>
+    <downloadURL>https://senetfiles.blob.core.windows.net/files/sen-et-conda-Linux64.run</downloadURL>
+    <templateparameter>
+      <name>arguments</name>
+      <dataType>java.io.File</dataType>
+      <defaultValue>Command Template</defaultValue>
+      <valueSet/>
+      <notNull>false</notNull>
+      <notEmpty>false</notEmpty>
+      <deprecated>false</deprecated>
+      <parameterType>TemplateParameter</parameterType>
+      <parameters>
+        <parameter>
+          <name>targetLocation</name>
+          <dataType>java.io.File</dataType>
+	  <defaultValue>~/.snap/auxdata</defaultValue>
+          <valueSet/>
+          <notNull>false</notNull>
+          <notEmpty>false</notEmpty>
+          <parameterType>RegularParameter</parameterType>
+        </parameter>
+      </parameters>
+      <template type="simple">
+        <contents>--nox11
+          --target
+          $targetLocation/sen-et-conda-Linux64</contents>
+      </template>
+      <outputFile>Command Template</outputFile>
+    </templateparameter> 
+    <targetLocation>$USERPROFILE/.snap/auxdata</targetLocation>
+    <entryPoint>sen-et-conda-Linux64.run</entryPoint>
+    <updateVariable>SENET_BIN_DIR</updateVariable>
+  </linuxBundle>
+  <macosxBundle>
+    <bundleType>ZIP</bundleType>
+    <bundleLocation>REMOTE</bundleLocation>
+    <downloadURL>https://esa-sen4et.org/outputs/sen-et-1.0-conda-Darwin64.zip</downloadURL>
+    <templateparameter>
+      <template type="simple">
+        <contents></contents>
+      </template>
+    </templateparameter>
+    <targetLocation>$USER_HOME/.snap/auxdata</targetLocation>
+    <entryPoint>sen-et-1.0-conda-Darwin64.zip</entryPoint>
+    <updateVariable>SENET_BIN_DIR</updateVariable>
+  </macosxBundle>
+</operator>

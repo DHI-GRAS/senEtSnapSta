@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operator>
+	<name>org.esa.snap.core.gpf.operators.tooladapter.structuralParams</name>
+  <operatorClass>org.esa.snap.core.gpf.operators.tooladapter.ToolAdapterOp</operatorClass>
+  <alias>Produce structural parameters</alias>
+  <label>Produce maps of vegetation structural parameters</label>
+  <version>0.1</version>
+  <authors>DHI GRAS A/S</authors>
+  <copyright>(C) 2019 DHI GRAS A/S</copyright>
+  <description>This operator produces maps of vegetation structural parameters required for 
+	  TSEB model runs, based on a land cover map and a look-up table.</description>
+  <internal>false</internal>
+  <autoWriteSuppressed>false</autoWriteSuppressed>
+  <menuLocation>Menu/Optical/Thematic Land Processing/SEN-ET</menuLocation>
+  <preprocessTool>false</preprocessTool>
+  <writeForProcessing>false</writeForProcessing>
+  <mainToolFileLocation>$SENET_BIN_DIR/$SENET_EXEC</mainToolFileLocation>
+  <workingDir>$java.io.tmpdir</workingDir>
+  <templateType>VELOCITY</templateType>
+  <template type="file">
+    <file>structural-params.vm</file>
+  </template>
+  <progressPattern>.*</progressPattern>
+  <errorPattern>(ERROR:)(.+)</errorPattern>
+  <stepPattern>.*</stepPattern>
+  <variables>
+    <osvariable>
+      <key>SENET_BIN_DIR</key>
+      <value/>
+      <windows>$HOME/.snap/auxdata/sen-et-conda-Win64/sen-et-snap-scripts</windows>
+      <linux>$HOME/.snap/auxdata/sen-et-conda-Linux64/sen-et-snap-scripts</linux>
+      <macosx>$HOME/.snap/auxdata/sen-et-conda-Darwin64/sen-et-snap-scripts</macosx>
+      <isTransient>true</isTransient>
+      <isShared>false</isShared>
+    </osvariable>
+    <osvariable>
+      <key>SENET_EXEC</key>
+      <value/>
+      <windows>structural_params.bat</windows>
+      <linux>structural_params.sh</linux>
+      <macosx>structural_params.sh</macosx>
+      <isTransient>false</isTransient>
+      <isShared>false</isShared>
+    </osvariable>
+    <osvariable>
+      <key>USERPROFILE</key>
+      <value></value>
+      <isShared>false</isShared>
+      <windows></windows>
+      <linux>$HOME</linux>
+      <macosx>$HOME</macosx>
+      <isTransient>false</isTransient>
+    </osvariable>
+    <osvariable>
+      <key>HOME</key>
+      <value></value>
+      <isShared>false</isShared>
+      <windows>$USERPROFILE</windows>
+      <linux></linux>
+      <macosx></macosx>
+      <isTransient>false</isTransient>
+    </osvariable>
+    <osvariable>
+      <key>USER_HOME</key>
+      <value></value>
+      <isShared>false</isShared>
+      <windows>$USERPROFILE</windows>
+      <linux>$HOME</linux>
+      <macosx>$HOME</macosx>
+      <isTransient>false</isTransient>
+    </osvariable>
+    <variable>
+      <key>java.io.tmpdir</key>
+      <value></value>
+      <isShared>false</isShared>
+    </variable>
+  </variables>
+  <parameters>
+	<parameter>
+            <name>landcover_band</name>
+            <label>Land-cover band</label>
+            <description>Land-cover band to use</description>
+            <dataType>java.lang.String</dataType>
+            <defaultValue></defaultValue>
+            <notEmpty>true</notEmpty>
+        </parameter>
+        <parameter>
+            <name>look_up_table</name>
+            <label>Look-up table</label>
+            <description>Look-up table with parameter values for each land-cover class</description>
+            <dataType>java.io.File</dataType>
+            <defaultValue></defaultValue>
+            <notEmpty>true</notEmpty>
+            <pattern>.*\.csv$</pattern>
+        </parameter>
+        <parameter>
+            <name>produce_vegetation_height</name>
+            <label>Produce vegetation height maps</label>
+            <description>Produce vegetation height maps based on land-cover map and look-up table.
+            In case of herbaceous vegetation they also depend on plant area index</description>
+            <dataType>boolean</dataType>
+            <defaultValue>True</defaultValue>
+            <notEmpty>true</notEmpty>
+        </parameter>
+        <parameter>
+            <name>produce_fractional_cover</name>
+            <label>Produce vegetation fractional cover maps</label>
+            <description>Produce vegetation fractional cover maps based on land-cover map and look-up table.
+            </description>
+            <dataType>boolean</dataType>
+            <defaultValue>True</defaultValue>
+            <notEmpty>true</notEmpty>
+        </parameter>
+        <parameter>
+            <name>produce_canopy_height_width_ratio</name>
+            <label>Produce canopy height to width ratio maps</label>
+            <description>Produce canopy height to width ratio maps based on land-cover map and look-up table.
+            </description>
+            <dataType>boolean</dataType>
+            <defaultValue>True</defaultValue>
+            <notEmpty>true</notEmpty>
+    	</parameter>
+	    <parameter>
+            <name>produce_leaf_width</name>
+            <label>Produce leaf width maps</label>
+            <description>Produce leaf width maps based on land-cover map and look-up table.
+            </description>
+            <dataType>boolean</dataType>
+            <defaultValue>True</defaultValue>
+            <notEmpty>true</notEmpty>
+        </parameter>
+        <parameter>
+            <name>produce_leaf_inclination_distribution</name>
+            <label>Produce leaf inclination distribution maps</label>
+            <description>Produce leaf inclination distribution maps based on land-cover map and look-up table.
+            Leaf inclination distribution parameter: x_LAD=1 for spherical LIDF, x_LAD=0 for
+            vertical LIDF, x_LAD=float(inf) for horzontal LIDF
+            </description>
+            <dataType>boolean</dataType>
+            <defaultValue>True</defaultValue>
+            <notEmpty>true</notEmpty>
+        </parameter>
+        <parameter>
+            <name>produce_IGBP_classification</name>
+            <label>Produce landcover map with IGBP classes</label>
+            <description>Produce landcover map with IGBP classes</description>
+            <dataType>boolean</dataType>
+            <defaultValue>True</defaultValue>
+            <notEmpty>true</notEmpty>
+        </parameter>
+        <parameter>
+            <name>targetProductFile</name>
+            <label>Output image</label>
+            <description>Output image</description>
+            <dataType>java.io.File</dataType>
+            <pattern>.*\.dim$</pattern>
+   	    </parameter>
+  </parameters>
+  <sourceProductDescriptors>
+        <org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
+            <name>Land-cover map</name>
+        </org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
+        <org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
+            <name>LAI map</name>
+    	</org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
+	<org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
+            <name>Fraction of green vegetation map</name>
+        </org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
+  </sourceProductDescriptors>
+  <targetPropertyDescriptors/>
+  <numSourceProducts>3</numSourceProducts>
+  <source>user</source>
+  <isSystem>false</isSystem>
+  <isHandlingOutputName>false</isHandlingOutputName>
+  <windowsBundle>
+    <bundleType>INSTALLER</bundleType>
+    <bundleLocation>REMOTE</bundleLocation>
+    <downloadURL>https://senetfiles.blob.core.windows.net/files/sen-et-conda-Win64.exe</downloadURL>
+    <templateparameter>
+      <template type="simple">
+        <contents></contents>
+      </template>
+    </templateparameter>
+    <targetLocation>$USERPROFILE/.snap/auxdata</targetLocation>
+    <entryPoint>sen-et-conda-Win64.exe</entryPoint>
+    <updateVariable>SENET_BIN_DIR</updateVariable>
+  </windowsBundle>
+  <linuxBundle>
+    <bundleType>INSTALLER</bundleType>
+    <bundleLocation>REMOTE</bundleLocation>
+    <downloadURL>https://senetfiles.blob.core.windows.net/files/sen-et-conda-Linux64.run</downloadURL>
+    <templateparameter>
+      <name>arguments</name>
+      <dataType>java.io.File</dataType>
+      <defaultValue>Command Template</defaultValue>
+      <valueSet/>
+      <notNull>false</notNull>
+      <notEmpty>false</notEmpty>
+      <deprecated>false</deprecated>
+      <parameterType>TemplateParameter</parameterType>
+      <parameters>
+        <parameter>
+          <name>targetLocation</name>
+          <dataType>java.io.File</dataType>
+	  <defaultValue>~/.snap/auxdata</defaultValue>
+          <valueSet/>
+          <notNull>false</notNull>
+          <notEmpty>false</notEmpty>
+          <parameterType>RegularParameter</parameterType>
+        </parameter>
+      </parameters>
+      <template type="simple">
+        <contents>--nox11
+          --target
+          $targetLocation/sen-et-conda-Linux64</contents>
+      </template>
+      <outputFile>Command Template</outputFile>
+    </templateparameter>
+    <targetLocation>$USERPROFILE/.snap/auxdata</targetLocation>
+    <entryPoint>sen-et-conda-Linux64.run</entryPoint>
+    <updateVariable>SENET_BIN_DIR</updateVariable>
+  </linuxBundle>
+  <macosxBundle>
+    <bundleType>ZIP</bundleType>
+    <bundleLocation>REMOTE</bundleLocation>
+    <downloadURL>https://esa-sen4et.org/outputs/sen-et-1.0-conda-Darwin64.zip</downloadURL>
+    <templateparameter>
+      <template type="simple">
+        <contents></contents>
+      </template>
+    </templateparameter>
+    <targetLocation>$USER_HOME/.snap/auxdata</targetLocation>
+    <entryPoint>sen-et-1.0-conda-Darwin64.zip</entryPoint>
+    <updateVariable>SENET_BIN_DIR</updateVariable>
+  </macosxBundle>
+</operator>

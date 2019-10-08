@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+OpenIDE-Module-Display-Category: SNAP
+OpenIDE-Module-Implementation-Version: 7.0.0
+OpenIDE-Module-Java-Dependencies: Java > 1.8
+OpenIDE-Module-Type: STA
+OpenIDE-Module-Short-Description: Estimate leaf reflectance and trasmittance from chlorophyl and water content
+OpenIDE-Module: org.esa.snap.core.gpf.operators.tooladapter.leafSpectra
+OpenIDE-Module-Module-Dependencies: org.esa.snap.snap.sta, org.esa.snap.snap.sta.ui
+OpenIDE-Module-Alias: Estimate leaf reflectance and transmittance
+OpenIDE-Module-Specification-Version: 7.0.0
+
