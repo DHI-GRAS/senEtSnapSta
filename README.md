@@ -1,4 +1,4 @@
-## Sen-Et SNAP standalone tool adapter
+# Sen-Et SNAP standalone tool adapter
 
 This repository contains the implementation of the Sen-ET SNAP standalone tool adapter
 
