@@ -12,7 +12,7 @@ The purpose of the Sen-ET SNAP plugin is to enable estimation of actual evapotra
 
 ## Build the module
 
-*System Requirements*
+***System Requirements***
   * JDK 8
   * Maven 3
 
