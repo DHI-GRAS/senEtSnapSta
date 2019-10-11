@@ -16,3 +16,4 @@ The purpose of the Sen-ET SNAP plugin is to enable estimation of actual evapotra
   * JDK 8
   * Maven 3
 
+After having installed JDK and Maven, open a terminal, clone this repository, cd into it, and type ```maven clean package```. On success, this command will generate a `target` folder which will contain all the `.nbm` files for each operator. 
