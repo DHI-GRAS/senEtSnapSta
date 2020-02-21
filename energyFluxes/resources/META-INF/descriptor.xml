@@ -149,7 +149,7 @@
   </parameters>
   <sourceProductDescriptors>
         <org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
-            <name>Land surface temperature product</name>
+            <name>Sharpened land surface temperature product</name>
     	</org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
 	<org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
             <name>LST view zenith angle product</name>
@@ -158,7 +158,7 @@
             <name>Leaf area index product</name>
         </org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
 	<org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
-            <name>Canopu structural properties product</name>
+            <name>Vegetation structural parameters product</name>
         </org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
 	<org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
             <name>Fraction of green vegetation product</name>
@@ -176,7 +176,7 @@
             <name>Longwave irradiance product</name>
         </org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
 	<org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
-            <name>Mask</name>
+            <name>Sentinel-2 mask</name>
         </org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
   </sourceProductDescriptors>
   <targetPropertyDescriptors/>
@@ -189,9 +189,32 @@
     <bundleLocation>REMOTE</bundleLocation>
     <downloadURL>https://senetfiles.blob.core.windows.net/files/sen-et-conda-Win64.exe</downloadURL>
     <templateparameter>
+      <name>arguments</name>
+      <dataType>java.io.File</dataType>
+      <defaultValue>Command Template</defaultValue>
+      <valueSet/>
+      <notNull>false</notNull>
+      <notEmpty>false</notEmpty>
+      <deprecated>false</deprecated>
+      <parameterType>TemplateParameter</parameterType>
+      <parameters>
+        <parameter>
+          <name>targetLocation</name>
+          <dataType>java.io.File</dataType>
+          <defaultValue>$USERPROFILE\.snap\auxdata</defaultValue>
+          <valueSet/>
+          <notNull>false</notNull>
+          <notEmpty>false</notEmpty>
+          <parameterType>RegularParameter</parameterType>
+        </parameter>
+      </parameters>
       <template type="simple">
-        <contents></contents>
+        <contents>-y
+-gm2
+-o
+$targetLocation/sen-et-conda-Win64</contents>
       </template>
+      <outputFile>Command Template</outputFile>
     </templateparameter>
     <targetLocation>$USERPROFILE/.snap/auxdata</targetLocation>
     <entryPoint>sen-et-conda-Win64.exe</entryPoint>
