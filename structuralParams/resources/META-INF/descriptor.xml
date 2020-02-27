@@ -81,7 +81,7 @@
             <label>Land-cover band</label>
             <description>Land-cover band to use</description>
             <dataType>java.lang.String</dataType>
-            <defaultValue></defaultValue>
+            <defaultValue>CCILandCover-2015</defaultValue>
             <notEmpty>true</notEmpty>
         </parameter>
         <parameter>
@@ -89,7 +89,7 @@
             <label>Look-up table</label>
             <description>Look-up table with parameter values for each land-cover class</description>
             <dataType>java.io.File</dataType>
-            <defaultValue></defaultValue>
+            <defaultValue/>
             <notEmpty>true</notEmpty>
             <pattern>.*\.csv$</pattern>
         </parameter>

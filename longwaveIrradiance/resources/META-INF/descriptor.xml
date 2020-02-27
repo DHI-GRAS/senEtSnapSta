@@ -80,7 +80,7 @@
             <label>Air temperature band (K)</label>
             <description>Air temperature band to use</description>
             <dataType>java.lang.String</dataType>
-            <defaultValue></defaultValue>
+            <defaultValue>air_temperature</defaultValue>
             <notEmpty>true</notEmpty>
         </parameter>
         <parameter>
@@ -88,7 +88,7 @@
             <label>Vapour pressure band (mb)</label>
             <description>Vapour pressure band to use</description>
             <dataType>java.lang.String</dataType>
-            <defaultValue></defaultValue>
+            <defaultValue>vapour_pressure</defaultValue>
             <notEmpty>true</notEmpty>
         </parameter>
         <parameter>
@@ -96,7 +96,7 @@
             <label>Air pressure band (mb)</label>
             <description>Air pressure band to use</description>
             <dataType>java.lang.String</dataType>
-            <defaultValue></defaultValue>
+            <defaultValue>air_pressure</defaultValue>
             <notEmpty>true</notEmpty>
         </parameter>
         <parameter>
