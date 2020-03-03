@@ -6,7 +6,7 @@
     
     <artifactId>senEtSnapSta</artifactId>
     <groupId>org.esa.s2tbx.s2tbxStaAdapters</groupId>
-    <version>0.1</version>
+    <version>1.0</version>
 
     <packaging>pom</packaging>
 
