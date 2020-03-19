@@ -4,7 +4,7 @@
   <operatorClass>org.esa.snap.core.gpf.operators.tooladapter.ToolAdapterOp</operatorClass>
   <alias>Estimate daily evapotranspiration</alias>
   <label>Estimate daily evapotranspiration</label>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <authors>DHI GRAS A/S</authors>
   <copyright>(C) 2019 DHI GRAS A/S</copyright>
   <description>This operator estimates daily evapotranspiration by extrapolating instantenous latent heat flux.</description>
@@ -91,11 +91,7 @@
             <name>Meteorological inputs product</name>
         </org.esa.snap.core.gpf.descriptor.SimpleSourceProductDescriptor>
   </sourceProductDescriptors>
-  <targetPropertyDescriptors>
-        <org.esa.snap.core.gpf.descriptor.DefaultTargetPropertyDescriptor>
-            <name>Output</name>
-        </org.esa.snap.core.gpf.descriptor.DefaultTargetPropertyDescriptor>
-  </targetPropertyDescriptors>
+  <targetPropertyDescriptors/>
   <numSourceProducts>2</numSourceProducts>
   <source>user</source>
   <isSystem>false</isSystem>
