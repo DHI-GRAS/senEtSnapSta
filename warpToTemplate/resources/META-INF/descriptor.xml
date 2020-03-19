@@ -4,7 +4,7 @@
   <operatorClass>org.esa.snap.core.gpf.operators.tooladapter.ToolAdapterOp</operatorClass>
   <alias>Warp to template</alias>
   <label>Warp to template projection, resolution and extent</label>
-  <version>0.1</version>
+  <version>1.0.0</version>
   <authors>DHI GRAS A/S</authors>
   <copyright>(C) 2019 DHI GRAS A/S</copyright>
   <description>Reproject, resample and subset source image to template using GDAL Warp.</description>

@@ -4,7 +4,7 @@
   <operatorClass>org.esa.snap.core.gpf.operators.tooladapter.ToolAdapterOp</operatorClass>
   <alias>Estimate land surface energy fluxes</alias>
   <label>Estimate land surface energy fluxes</label>
-  <version>0.1</version>
+  <version>1.0.0</version>
   <authors>DHI GRAS A/S</authors>
   <copyright>(C) 2019 DHI GRAS A/S</copyright>
   <description>This operator estimates land surface energy fluxes (latent, sensible and ground

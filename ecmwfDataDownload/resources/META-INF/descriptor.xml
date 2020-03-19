@@ -4,7 +4,7 @@
   <operatorClass>org.esa.snap.core.gpf.operators.tooladapter.ToolAdapterOp</operatorClass>
   <alias>Download ECMWF ERA5 reanalysis data</alias>
   <label>Download ECMWF ERA5 reanalysis data</label>
-  <version>0.1</version>
+  <version>1.0.0</version>
   <authors>DHI GRAS A/S</authors>
   <copyright>(C) 2019 DHI GRAS A/S</copyright>
   <description>Download ECMWF ERA5 reanalysis data from Climate Data Store.</description>
