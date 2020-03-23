@@ -4,7 +4,7 @@
   <operatorClass>org.esa.snap.core.gpf.operators.tooladapter.ToolAdapterOp</operatorClass>
   <alias>Estimate longwave irradiance</alias>
   <label>Estimate atmosphere longwave irradiance</label>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <authors>DHI GRAS A/S</authors>
   <copyright>(C) 2019 DHI GRAS A/S</copyright>
   <description>This operator estimates atmosphere longwave irradiance (W/m^2) based on meteorological inputs.</description>

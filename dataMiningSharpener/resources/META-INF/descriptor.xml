@@ -4,7 +4,7 @@
   <operatorClass>org.esa.snap.core.gpf.operators.tooladapter.ToolAdapterOp</operatorClass>
   <alias>Sharpen LST</alias>
   <label>Sharpen LST with data mining sharpener</label>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <authors>DHI GRAS A/S</authors>
   <copyright>(C) 2019 DHI GRAS A/S</copyright>
   <description>This operator calls the Python implementation of the Data Mining Sharpener. It can be used

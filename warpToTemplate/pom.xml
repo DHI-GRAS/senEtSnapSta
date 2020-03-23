@@ -4,7 +4,7 @@
     <parent>
         <artifactId>senEtSnapSta</artifactId>
         <groupId>org.esa.s2tbx.s2tbxStaAdapters</groupId>
-        <version>1.0</version>
+        <version>1.0.1</version>
     </parent>
 
     <artifactId>warpToTemplate</artifactId>
